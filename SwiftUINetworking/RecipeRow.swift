@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecipeRow: View {
 
-    @State var receipt: Recipe
+    var receipt: Recipe
 
     var body: some View {
         HStack {

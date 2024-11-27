@@ -11,11 +11,14 @@ class RecipeNetworkService {
 
     enum APIError: LocalizedError {
         case invalidURL
+        case jsonParsingFailure
 
         var errorDescription: String? {
             switch self {
             case .invalidURL:
-                return "Invalid URL"
+                "Invalid URL"
+            case .jsonParsingFailure:
+                "JSON parsing failure"
             }
         }
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    private let viewModel = RecipeListViewModel()
+    @State private var viewModel = RecipeListViewModel()
 
     var body: some View {
         NavigationStack {
