@@ -12,11 +12,24 @@ import Observation
 @Observable
 class RecipeListViewModel {
 
-    var recipes: [Recipe]?
+    var recipes = [Recipe]()
+
+    var errorMessage: String?
 
     private let networkService = RecipeNetworkService()
 
-    func fetchFoods() async throws {
-        recipes = try await networkService.fetchRecipes()
+    private var isLoading: Bool = false
+
+    func fetchFoods() async {
+        guard isLoading == false else { return }
+        isLoading = true
+        defer {
+            isLoading = false
+        }
+        do {
+            recipes = try await networkService.fetchRecipes()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
 }

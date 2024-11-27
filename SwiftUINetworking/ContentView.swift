@@ -13,20 +13,31 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            Group {
-                if let recipes = viewModel.recipes {
-                    List(recipes) { recipe in
-                        RecipeRow(receipt: recipe)
+            List(viewModel.recipes) { recipe in
+                RecipeRow(receipt: recipe)
+            }
+            .refreshable {
+                await viewModel.fetchFoods()
+            }
+            .overlay {
+                if let errorMessage = viewModel.errorMessage {
+                    ContentUnavailableView {
+                        Label("Unable to load recipes", systemImage: "questionmark.text.page")
+                    } description: {
+                        Text(errorMessage)
+                    } actions: {
+                        Button("Retry") {
+                            Task {
+                                await viewModel.fetchFoods()
+                            }
+                        }
                     }
-                    .refreshable {
-                        try? await viewModel.fetchFoods()
-                    }
-                } else {
-                    ContentUnavailableView("No recipes available.", systemImage: "questionmark.text.page")
+                } else if viewModel.recipes.isEmpty {
+                    ContentUnavailableView("Recipes list is empty", systemImage: "questionmark.text.page")
                 }
             }
             .task {
-                try? await viewModel.fetchFoods()
+                await viewModel.fetchFoods()
             }
             .navigationTitle("Recipes")
         }
