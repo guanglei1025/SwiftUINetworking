@@ -13,9 +13,9 @@ struct ContentView: View {
 
     var body: some View {
         Group {
-            if let foodList = viewModel.foods {
-                List(foodList) { food in
-                    Text(food.description)
+            if let recipes = viewModel.recipes {
+                List(recipes) { recipe in
+                    Text(recipe.name)
                 }
             } else {
                 ContentUnavailableView("No recipes available.", systemImage: "questionmark.text.page")

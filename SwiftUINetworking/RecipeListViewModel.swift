@@ -10,13 +10,12 @@ import SwiftUI
 
 @Observable
 class RecipeListViewModel {
-    var foods: [Recipe]?
+
+    var recipes: [Recipe]?
+
+    private let networkService = RecipeNetworkService()
 
     func fetchFoods() async throws {
-        self.foods = [
-            Recipe(id: 1, name: "A", description: "Description For A"),
-            Recipe(id: 2, name: "B", description: "Description For B"),
-            Recipe(id: 3, name: "C", description: "Description For C")
-        ]
+        recipes = try await networkService.fetchRecipes()
     }
 }
