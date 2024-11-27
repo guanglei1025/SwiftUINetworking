@@ -12,17 +12,23 @@ struct ContentView: View {
     private let viewModel = RecipeListViewModel()
 
     var body: some View {
-        Group {
-            if let recipes = viewModel.recipes {
-                List(recipes) { recipe in
-                    Text(recipe.name)
+        NavigationStack {
+            Group {
+                if let recipes = viewModel.recipes {
+                    List(recipes) { recipe in
+                        RecipeRow(receipt: recipe)
+                    }
+                    .refreshable {
+                        try? await viewModel.fetchFoods()
+                    }
+                } else {
+                    ContentUnavailableView("No recipes available.", systemImage: "questionmark.text.page")
                 }
-            } else {
-                ContentUnavailableView("No recipes available.", systemImage: "questionmark.text.page")
             }
-        }
-        .task {
-            try? await viewModel.fetchFoods()
+            .task {
+                try? await viewModel.fetchFoods()
+            }
+            .navigationTitle("Recipes")
         }
     }
 }
