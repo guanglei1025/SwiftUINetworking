@@ -9,7 +9,7 @@ struct RecipePayload: Codable {
     let recipes: [Recipe]
 }
 
-struct Recipe: Codable, Identifiable {
+struct Recipe: Codable, Identifiable, Equatable {
     let id: String
     let name: String
     let cuisine: String
@@ -26,3 +26,4 @@ struct Recipe: Codable, Identifiable {
         case youtubeURL = "youtube_url"
     }
 }
+

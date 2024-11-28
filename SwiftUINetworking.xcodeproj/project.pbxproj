@@ -29,20 +29,31 @@
 		A1BCA7982CF78CD300E0147C /* SwiftUINetworkingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUINetworkingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A1BCA7D12CF810B500E0147C /* Exceptions for "SwiftUINetworking" folder in "SwiftUINetworkingTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/Recipe.swift,
+				RecipeListViewModel.swift,
+				RecipeNetworkService.swift,
+				RecipeNetworkServiceProtocol.swift,
+			);
+			target = A1BCA78D2CF78CD300E0147C /* SwiftUINetworkingTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A1BCA77E2CF78CD200E0147C /* SwiftUINetworking */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A1BCA7D12CF810B500E0147C /* Exceptions for "SwiftUINetworking" folder in "SwiftUINetworkingTests" target */,
+			);
 			path = SwiftUINetworking;
 			sourceTree = "<group>";
 		};
 		A1BCA7912CF78CD300E0147C /* SwiftUINetworkingTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = SwiftUINetworkingTests;
-			sourceTree = "<group>";
-		};
-		A1BCA79B2CF78CD300E0147C /* SwiftUINetworkingUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SwiftUINetworkingUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -77,7 +88,6 @@
 			children = (
 				A1BCA77E2CF78CD200E0147C /* SwiftUINetworking */,
 				A1BCA7912CF78CD300E0147C /* SwiftUINetworkingTests */,
-				A1BCA79B2CF78CD300E0147C /* SwiftUINetworkingUITests */,
 				A1BCA77D2CF78CD200E0147C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,9 +162,6 @@
 			);
 			dependencies = (
 				A1BCA79A2CF78CD300E0147C /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				A1BCA79B2CF78CD300E0147C /* SwiftUINetworkingUITests */,
 			);
 			name = SwiftUINetworkingUITests;
 			packageProductDependencies = (

@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol RecipeNetworkServiceProtocol {
-    func fetchRecipes() async throws -> [Recipe]
-}
-
 class RecipeNetworkService: RecipeNetworkServiceProtocol {
 
     enum APIError: LocalizedError {
