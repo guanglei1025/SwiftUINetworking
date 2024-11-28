@@ -12,7 +12,6 @@ class RecipeNetworkService: RecipeNetworkServiceProtocol {
     enum APIError: LocalizedError {
         case invalidURL
         case jsonParsingFailure(reason: String)
-        case networkError(Error)
 
         var errorDescription: String? {
             switch self {
@@ -20,8 +19,6 @@ class RecipeNetworkService: RecipeNetworkServiceProtocol {
                 return "The URL is invalid."
             case .jsonParsingFailure(let reason):
                 return "Failed to parse the JSON response: \(reason)"
-            case .networkError(let error):
-                return "Network error occurred: \(error.localizedDescription)"
             }
         }
     }

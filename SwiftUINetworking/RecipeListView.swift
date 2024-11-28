@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  RecipeListView.swift
 //  SwiftUINetworking
 //
 //  Created by Guanglei Liu on 11/27/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct RecipeListView: View {
 
     @State private var viewModel = RecipeListViewModel()
 
@@ -45,5 +45,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    RecipeListView()
 }
