@@ -16,7 +16,11 @@ class RecipeListViewModel {
 
     var errorMessage: String?
 
-    private let networkService = RecipeNetworkService()
+    private let networkService: RecipeNetworkServiceProtocol
+
+    init(networkService: RecipeNetworkServiceProtocol = RecipeNetworkService()) {
+        self.networkService = networkService
+    }
 
     private var isLoading: Bool = false
 
